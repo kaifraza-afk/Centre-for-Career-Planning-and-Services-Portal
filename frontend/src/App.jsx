@@ -20,7 +20,8 @@ import Applications from './pages/student/Applications';
 import SavedApplications from './pages/student/Savedapplications';
 import ResumeBuilder from './pages/student/ResumeBuilder';
 import DiscussionForum from './pages/student/DiscussionForum';
-import AnalyticsDashboard from './pages/student/AnalyticsDashboard';
+import Analytics from './pages/student/Analytics';
+// import MLDashboard from './pages/MLDashboard';
 
 import Home from './pages/Home';
 import Referrals from './pages/Referrals';
@@ -59,7 +60,7 @@ function App() {
         <Route path='/dashboard' element={authUser ? <Dashboard /> : <Navigate to='/login' />} />
         <Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
         <Route path='/signup' element={authUser ? <Navigate to='/' /> : <Signup />} />
-        <Route path='/analytics' element={<AnalyticsDashboard />} />
+        <Route path='/analytics' element={<Analytics />} />
         <Route path='/referrals' element={<Referrals />} />
         <Route path='/resumebuilder' element={<ResumeBuilder />} />
         <Route path='/alumni' element={<Alumni />} />

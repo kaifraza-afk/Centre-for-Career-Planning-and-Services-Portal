@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: ccps-backend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
+        - name: JWT_SECRET
+          value: "your_jwt_secret"
+        - name: MONGO_URI
+          value: "mongodb://mongo:27017/ccps"
+        - name: MONGODB_URI
+          value: "mongodb://mongo:27017/ccps"
+        - name: SMTP_USER
+          value: "mdkaifra251@gmail.com"
+        - name: SMTP_PASSWORD
+          value: "ijiu wlbm xznn ngkp"
+        - name: SMTP_SENDER_EMAIL
+          value: "mdkaifraza251@gmail.com"
+        - name: FRONTEND_URL
+          value: "http://localhost"
+        - name: NODE_ENV
+          value: "production"

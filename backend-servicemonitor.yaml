@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: backend-servicemonitor
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: backend        # matches your backend Service
+  endpoints:
+    - port: http          # your Service port
+      path: /metrics      # endpoint where prom-client exposes metrics
+      interval: 15s       # scrape interval
