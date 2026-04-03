@@ -13,8 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: ccps-frontend:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5173   # or whatever port your frontend serves
+        - name: frontend
+          image: mdkaifraza/ccps-frontend:latest
+          ports:
+            - containerPort: 80

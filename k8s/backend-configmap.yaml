@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  PORT: "3000"
+  MONGODB_URI: "mongodb+srv://utkarshgdg7_db_user:L4WJljLGqktl8azd@ccps.vqlbhvf.mongodb.net/?appName=CCPS"
+  CLOUDINARY_CLOUD_NAME: "dit5ifqj8"
+  CLOUDINARY_API_KEY: "738312464224149"
+  SMTP_USER: "xernmark@gmail.com"
+  SMTP_SENDER_EMAIL: "xernmark@gmail.com"
+  FRONTEND_URL: "http://localhost"
+  NODE_ENV: "production"
+  ML_API_URL: "http://ml-service:5001"

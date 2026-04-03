@@ -13,8 +13,8 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: ccps-nginx:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: mdkaifraza/ccps-nginx:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

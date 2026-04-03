@@ -18,7 +18,7 @@ services:
   frontend:
     image: mdkaifraza/ccps-frontend:latest
     environment:
-      VITE_BACKEND_URL: /api
+      VITE_BACKEND_URL: ''
     volumes:
       - ./frontend/dist:/usr/share/nginx/html
     networks:
@@ -45,6 +45,16 @@ services:
     restart: always
     networks:
       - app-network
+  ml:
+    image: mdkaifraza/ccps-ml:latest
+    container_name: ml
+    ports:
+      - "5001:5001"
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app-network
+    restart: always
 
 networks:
   app-network:
