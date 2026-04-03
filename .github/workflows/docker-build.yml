@@ -1,9 +1,9 @@
-name: Build & Push Frontend Docker Image
+name: Build & Push Docker Images
 
 on:
   push:
     branches:
-      - main   # or any branch you want to trigger the workflow
+      - main
 
 jobs:
   build-and-push:
@@ -22,7 +22,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # ✅ Build Frontend
       - name: Build & push frontend image
         run: |
-          DOCKER_BUILDKIT=1 docker build --compress -t mdkaifraza/ccps-frontend:latest ./frontend
+          DOCKER_BUILDKIT=1 docker build --compress \
+            -t mdkaifraza/ccps-frontend:latest \
+            -f frontend/Dockerfile .
           docker push mdkaifraza/ccps-frontend:latest
+
+      # ✅ Build Backend
+      - name: Build & push backend image
+        run: |
+          DOCKER_BUILDKIT=1 docker build --compress \
+            -t mdkaifraza/ccps-backend:latest \
+            -f backend/Dockerfile .
+          docker push mdkaifraza/ccps-backend:latest
