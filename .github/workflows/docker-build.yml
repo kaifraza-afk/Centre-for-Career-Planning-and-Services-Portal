@@ -1,4 +1,4 @@
-name: Build & Push Docker Images
+name: Build, Push & Deploy
 
 on:
   push:
@@ -24,6 +24,8 @@ jobs:
       - name: Build & push frontend image
         run: |
           DOCKER_BUILDKIT=1 docker build --compress \
+            --build-arg VITE_BACKEND_URL="" \
+            --build-arg VITE_ML_API_URL="/api/ml" \
             -t mdkaifraza/ccps-frontend:latest \
             -f frontend/Dockerfile .
           docker push mdkaifraza/ccps-frontend:latest
@@ -48,3 +50,23 @@ jobs:
             -t mdkaifraza/ccps-ml:latest \
             -f ml/Dockerfile .
           docker push mdkaifraza/ccps-ml:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            kubectl rollout restart deployment/frontend
+            kubectl rollout restart deployment/backend
+            kubectl rollout restart deployment/nginx
+            kubectl rollout restart deployment/ml
+            kubectl rollout status deployment/frontend
+            kubectl rollout status deployment/backend
+            kubectl rollout status deployment/nginx
+            kubectl rollout status deployment/ml
