@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ccps-backend:latest
-          imagePullPolicy: Never
+          image: mdkaifraza/ccps-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           envFrom:

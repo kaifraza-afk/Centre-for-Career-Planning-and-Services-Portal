@@ -7,7 +7,6 @@ import apiRouter from "./routes/index.router.js";
 import connectionRouter from "./routes/connect.routes.js";
 import messageRouter from "./routes/message.routes.js"
 
-import mlRoutes from "./routes/ml.js"
 dotenv.config();
 
 const port = process.env.PORT || 3000;
@@ -22,6 +21,7 @@ const app = express();
     })
   );
 
+
 // Middleware
 app.use(cookieParser());
 app.use(express.json());
@@ -30,7 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 // Use all API routes
 app.use("/api", apiRouter);
 
-app.use('/api/ml', mlRoutes);
 
 app.use("/api/connect", connectionRouter);
 app.use("/api/messages", messageRouter);

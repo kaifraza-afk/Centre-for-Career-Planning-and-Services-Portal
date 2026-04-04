@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import toast from 'react-hot-toast'
-const BASE_URL = import.meta.env.VITE_BACKEND_URL+"/api" || 'http://localhost:3000/api';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL+"/api" ?? '';
 
 const useGetAnalytics = () => {
     const [loading, setLoading] = useState(false);

@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_ML_API_URL || 'http://localhost:3000/api/ml';
+const BASE = import.meta.env.VITE_ML_API_URL ?? '/api/ml';
 
 const get = (path, params = {}) => {
   const qs = new URLSearchParams(params).toString();

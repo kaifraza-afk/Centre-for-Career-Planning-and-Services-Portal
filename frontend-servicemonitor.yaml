@@ -4,15 +4,15 @@ metadata:
   name: frontend-servicemonitor
   namespace: monitoring
   labels:
-    releases: prometheus
+    release: prometheus
 spec:
+  namespaceSelector:
+    matchNames:
+      - default
   selector:
     matchLabels:
       app: frontend
   endpoints:
     - port: http
-      interval: 15s
       path: /metrics
-  namespaceSelector:
-    matchNames:
-      - default
+      interval: 15s

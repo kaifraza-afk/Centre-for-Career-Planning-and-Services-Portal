@@ -39,6 +39,7 @@ spec:
       containers:
         - name: prometheus
           image: prom/prometheus:v2.45.0
+          imagePullPolicy: Always
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
           ports:
@@ -56,6 +57,8 @@ kind: Service
 metadata:
   name: prometheus-service
   namespace: monitoring
+  labels:
+    app: prometheus
 spec:
   type: NodePort
   selector:

@@ -16,14 +16,20 @@ spec:
       containers:
         - name: grafana
           image: grafana/grafana:10.2.1
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          env:
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: "admin"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: grafana-service
   namespace: monitoring
+  labels:
+    app: grafana
 spec:
   type: NodePort
   selector:

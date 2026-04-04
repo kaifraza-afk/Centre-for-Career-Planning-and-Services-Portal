@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from '../../context/AuthContext';
-const BASE_URL = import.meta.env.VITE_BACKEND_URL+"/api/referrals" || 'http://localhost:3000/api/referrals';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL+"/api/referrals" ?? '';
 
 export const useProvideReferral = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -3,7 +3,7 @@
 // 1. Define the Backend Root URL and the Base API URL
 const BACKEND_ROOT = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
-// This logic ensures BASE_URL is the root API path, e.g., 'http://localhost:3000/api'
+// This logic ensures BASE_URL is the root API path, e.g
 const BASE_URL = BACKEND_ROOT.endsWith('/api')
     ? BACKEND_ROOT
     : BACKEND_ROOT.replace(/\/$/, '') + '/api';

@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,7 +21,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # ✅ Build Frontend
       - name: Build & push frontend image
         run: |
           DOCKER_BUILDKIT=1 docker build --compress \
@@ -30,10 +28,23 @@ jobs:
             -f frontend/Dockerfile .
           docker push mdkaifraza/ccps-frontend:latest
 
-      # ✅ Build Backend
       - name: Build & push backend image
         run: |
           DOCKER_BUILDKIT=1 docker build --compress \
             -t mdkaifraza/ccps-backend:latest \
             -f backend/Dockerfile .
           docker push mdkaifraza/ccps-backend:latest
+
+      - name: Build & push nginx image
+        run: |
+          DOCKER_BUILDKIT=1 docker build --compress \
+            -t mdkaifraza/ccps-nginx:latest \
+            -f nginx/Dockerfile .
+          docker push mdkaifraza/ccps-nginx:latest
+
+      - name: Build & push ml image
+        run: |
+          DOCKER_BUILDKIT=1 docker build --compress \
+            -t mdkaifraza/ccps-ml:latest \
+            -f ml/Dockerfile .
+          docker push mdkaifraza/ccps-ml:latest

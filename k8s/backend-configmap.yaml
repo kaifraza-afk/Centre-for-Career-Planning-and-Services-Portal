@@ -9,6 +9,6 @@ data:
   CLOUDINARY_API_KEY: "738312464224149"
   SMTP_USER: "xernmark@gmail.com"
   SMTP_SENDER_EMAIL: "xernmark@gmail.com"
-  FRONTEND_URL: "http://localhost"
+  FRONTEND_URL: "http://192.168.49.2:30000"
   NODE_ENV: "production"
   ML_API_URL: "http://ml-service:5001"

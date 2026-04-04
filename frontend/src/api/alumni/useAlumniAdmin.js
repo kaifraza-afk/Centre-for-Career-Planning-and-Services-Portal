@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 const BASE_URL =
   import.meta.env.VITE_BACKEND_URL + "/api/alumni" ||
-  "http://localhost:3000/api/alumni";
+  import.meta.env.VITE_BACKEND_URL + "/api/alumni";
 
 const useAlumniAdmin = () => {
   const [alumni, setAlumni] = useState([]);

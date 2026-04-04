@@ -6,10 +6,13 @@ metadata:
   labels:
     release: prometheus
 spec:
+  namespaceSelector:
+    matchNames:
+      - default
   selector:
     matchLabels:
-      app: backend        # matches your backend Service
+      app: backend
   endpoints:
-    - port: http          # your Service port
-      path: /metrics      # endpoint where prom-client exposes metrics
-      interval: 15s       # scrape interval
+    - port: http
+      path: /metrics
+      interval: 15s
