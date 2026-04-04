@@ -9,7 +9,7 @@ const Home = () => {
         {/* Header */}
         <header>
           <h1 className="text-3xl font-bold text-[#13665b] dark:text-teal-400 mb-2 font-montserrat">
-            Placement & Internship Highlight
+            Placements & Internship Highlights
           </h1>
           <p className="text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
             Here’s a glimpse of the recent placement and internship success at IIT Bhilai.
