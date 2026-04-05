@@ -6,7 +6,8 @@ import connectDB from "./config/db.js";
 import apiRouter from "./routes/index.router.js";
 import connectionRouter from "./routes/connect.routes.js";
 import messageRouter from "./routes/message.routes.js"
-
+import { register, collectDefaultMetrics } from 'prom-client';
+collectDefaultMetrics();
 dotenv.config();
 
 const port = process.env.PORT || 3000;
