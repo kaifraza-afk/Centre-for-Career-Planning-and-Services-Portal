@@ -18,3 +18,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+            - containerPort: 443
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/letsencrypt
+              readOnly: true
+      volumes:
+        - name: certs
+          hostPath:
+            path: /etc/letsencrypt
